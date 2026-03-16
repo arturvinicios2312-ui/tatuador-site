@@ -1,67 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<link rel="icon" type="image/png" sizes="32x32" href="imagens/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon.png">
+<link rel="apple-touch-icon" href="imagens/favicon.png">
 <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Studio Tattoo</title>
+<title>Jefferson Tattoo</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-
 <style>
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-z-index:-1;
-}
 
-body{
-background-image:url("imagens/textura1.jpg");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-}
-.portfolio img{
-border-radius:6px;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.portfolio img:hover{
-transform:scale(1.05);
-transition:0.4s;
-}
-
-.hero{
-height: 90vh;
-background: url("imagens/imagemhero.jpg") center/cover;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-}
-
-.hero::after{
-content:"";
+  .prev,
+.next{
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background: rgba(0,0,0,0.6);
+top:50%;
+transform:translateY(-50%);
+font-size:40px;
+color:white;
+cursor:pointer;
+padding:20px;
+user-select:none;
 }
 
-  body{
-background-image:url("imagens/textura1.jpg") !important;
-background-size:cover;
-background-position:center;
+.prev{
+left:30px;
 }
+
+.next{
+right:30px;
+}
+
+.close-lightbox{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+cursor:pointer;
+color:white;
+}
+  .portfolio-item{
+cursor:pointer;
+}
+
+  /* TRABALHOS RECENTES */
+
 .instagram{
 padding:120px 8%;
 text-align:center;
@@ -69,7 +55,7 @@ border-top:1px solid #111;
 }
 
 .instagram h2{
-font-family:Cinzel;
+font-family:'Cinzel', serif;
 font-size:40px;
 margin-bottom:40px;
 }
@@ -84,57 +70,104 @@ margin-bottom:40px;
 .instagram-grid img{
 width:100%;
 border-radius:12px;
-transition:transform 0.3s;
+transition:transform 0.3s ease, filter 0.3s ease;
+cursor:pointer;
 }
 
 .instagram-grid img:hover{
 transform:scale(1.05);
+filter:brightness(1.1);
 }
 
-.hero,
-.orbit-gallery,
-.portfolio,
-.sobre,
-.cta{
+/* -------- ORÇAMENTO -------- */
 
-opacity:0;
-transform:translateY(40px);
-animation:fadeUp 1s ease forwards;
+.orcamento{
+padding:140px 8%;
+background:linear-gradient(180deg,#0a0a0a,#111);
+text-align:center;
+border-top:1px solid #111;
+}
+
+.orcamento h2{
+font-family:'Cinzel', serif;
+font-size:36px;
+margin-bottom:40px;
+}
+
+.form-orcamento{
+max-width:520px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:18px;
+background:#0f0f0f;
+padding:40px;
+border-radius:12px;
+border:1px solid #222;
+box-shadow:0 0 40px rgba(0,0,0,0.5);
+}
+.form-orcamento input,
+.form-orcamento select,
+.form-orcamento textarea{
+
+background:#0a0a0a;
+border:1px solid #333;
+padding:14px;
+border-radius:6px;
+color:white;
+font-size:14px;
+transition:0.3s;
 
 }
 
-.hero{ animation-delay:0.2s }
-.orbit-gallery{ animation-delay:0.4s }
-.portfolio{ animation-delay:0.6s }
-.sobre{ animation-delay:0.8s }
-.cta{ animation-delay:1s }
+.form-orcamento input:focus,
+.form-orcamento select:focus,
+.form-orcamento textarea:focus{
 
-@keyframes fadeUp{
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+border-color:#ffa200;
+outline:none;
+box-shadow:0 0 10px rgba(230,57,70,0.4);
 
 }
 
-body{
-cursor:none;
-}
+.form-orcamento button{
 
-.cursor{
-
-position:fixed;
-width:20px;
-height:20px;
-border:2px solid white;
-border-radius:50%;
-pointer-events:none;
-transform:translate(-50%,-50%);
-transition:transform 0.1s;
-z-index:9999;
+background:#ffa200;
+color:white;
+padding:16px;
+border:none;
+font-weight:bold;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
 
 }
+
+.form-orcamento button:hover{
+
+background:#ffa200;
+transform:translateY(-2px);
+
+}
+
+/* BOTÃO ORÇAMENTO */
+
+.btn-orcamento{
+display:inline-block;
+padding:14px 28px;
+background:#ffa200;
+color:white;
+text-decoration:none;
+font-weight:bold;
+border-radius:6px;
+transition:0.3s;
+}
+
+.btn-orcamento:hover{
+background:#ffa200;
+}
+
+/* -------- GERAL -------- */
 
 *{
 margin:0;
@@ -146,9 +179,22 @@ body{
 background:#000;
 color:white;
 font-family:Inter;
+cursor:none;
 }
+
 html{
 scroll-behavior:smooth;
+}
+
+.cursor{
+position:fixed;
+width:20px;
+height:20px;
+border:2px solid white;
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:9999;
 }
 
 /* NAV */
@@ -167,8 +213,7 @@ backdrop-filter:blur(8px);
 }
 
 nav h2{
-font-family:'Cinzel', serif;
-letter-spacing:2px;
+font-family:Cinzel;
 }
 
 nav a{
@@ -188,49 +233,91 @@ align-items:center;
 justify-content:center;
 text-align:center;
 padding-top:120px;
-
 background-image:url("imagens/imagemhero.jpg");
 background-size:cover;
 background-position:center;
-background-repeat:no-repeat;
-
 position:relative;
 }
+
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+}
+
+.hero *{
+position:relative;
+z-index:1;
+}
+
+.hero h1{
+font-family:Cinzel;
+font-size:72px;
+margin-bottom:15px;
+}
+
 .hero p{
 color:#ffa200;
 font-size:18px;
 margin-bottom:35px;
 }
-
 .hero-buttons{
 display:flex;
 gap:20px;
+justify-content:center;
+align-items:center;
+margin-top:10px;
 }
 
-.btn-primary{
-background:white;
-color:black;
+.hero-buttons a{
+min-width:180px;
+text-align:center;
 padding:12px 28px;
 border-radius:30px;
 text-decoration:none;
 font-weight:500;
+transition:0.3s;
 }
 
+/* botão branco */
+.btn-primary{
+background:white;
+color:black;
+}
+
+/* botão outline */
 .btn-outline{
 border:1px solid white;
-padding:12px 28px;
-border-radius:30px;
-text-decoration:none;
 color:white;
 }
-.hero h1{
-font-family:'Cinzel', serif;
-font-size:72px;
-margin-bottom:15px;
-}
-/* GALERIA ORBITAL */
 
-/* GALERIA ORBITAL PREMIUM */
+/* botão vermelho */
+.btn-orcamento{
+background:#ffa200;
+color:white;
+}
+/* ESTILOS */
+
+.estilos{
+padding:80px 8%;
+text-align:center;
+}
+
+.estilos h2{
+font-family:Cinzel;
+margin-bottom:20px;
+}
+
+.estilos ul{
+list-style:none;
+color:#ccc;
+}
+
+/* GALERIA */
 
 .orbit-gallery{
 height:500px;
@@ -239,20 +326,6 @@ align-items:center;
 justify-content:center;
 margin-top:40px;
 perspective:1400px;
-overflow:hidden;
-position:relative;
-}
-
-/* luz suave atrás */
-
-.orbit-gallery::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
-filter:blur(80px);
-z-index:0;
 }
 
 .orbit{
@@ -263,10 +336,6 @@ transform-style:preserve-3d;
 animation:rotateOrbit 18s linear infinite;
 }
 
-.orbit:hover{
-animation-play-state:paused;
-}
-
 .orbit img{
 position:absolute;
 width:260px;
@@ -275,66 +344,98 @@ object-fit:cover;
 border-radius:20px;
 left:30px;
 top:20px;
-transition:0.4s;
-filter:brightness(0.6);
 }
 
-/* posições orbitais */
-
-.orbit img:nth-child(1){ transform:rotateY(0deg) translateZ(500px); }
-.orbit img:nth-child(2){ transform:rotateY(60deg) translateZ(500px); }
-.orbit img:nth-child(3){ transform:rotateY(120deg) translateZ(500px); }
-.orbit img:nth-child(4){ transform:rotateY(180deg) translateZ(500px); }
-.orbit img:nth-child(5){ transform:rotateY(240deg) translateZ(500px); }
-.orbit img:nth-child(6){ transform:rotateY(300deg) translateZ(500px); }
-
-/* imagem da frente destacada */
-
-.orbit img:nth-child(1){
-filter:brightness(1);
-transform:rotateY(0deg) translateZ(520px) scale(1.05);
-}
-
-/* animação */
+.orbit img:nth-child(1){ transform:rotateY(0deg) translateZ(500px);}
+.orbit img:nth-child(2){ transform:rotateY(60deg) translateZ(500px);}
+.orbit img:nth-child(3){ transform:rotateY(120deg) translateZ(500px);}
+.orbit img:nth-child(4){ transform:rotateY(180deg) translateZ(500px);}
+.orbit img:nth-child(5){ transform:rotateY(240deg) translateZ(500px);}
+.orbit img:nth-child(6){ transform:rotateY(300deg) translateZ(500px);}
 
 @keyframes rotateOrbit{
-
-0%{
-transform:rotateY(0deg);
-}
-
-100%{
-transform:rotateY(360deg);
-}
-
+0%{transform:rotateY(0deg)}
+100%{transform:rotateY(360deg)}
 }
 
 /* PORTFOLIO */
 
 .portfolio{
-padding:120px 8%;
+padding:100px 8%;
+max-width:1200px;
+margin:auto;
 }
 
 .portfolio h2{
 font-family:'Cinzel', serif;
+margin-bottom:40px;
 }
 
+/* GRID MAIS ORGANIZADO */
 
 .grid{
-column-count:2;
-column-gap:20px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
 }
 
-.grid img{
-width:100%;
-margin-bottom:20px;
+/* IMAGENS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+}
+
+/* ITEM */
+
+.portfolio-item{
+position:relative;
+overflow:hidden;
 border-radius:12px;
-transition:transform 0.4s;
 cursor:pointer;
 }
 
+/* IMAGEM */
+
+.portfolio-item img{
+width:100%;
+height:420px;
+object-fit:cover;
+transition:transform 0.6s ease, filter 0.6s ease;
+}
+
+/* TEXTO */
+
+.portfolio-item span{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+color:white;
+font-size:18px;
+letter-spacing:2px;
+opacity:0;
+transition:opacity 0.4s;
+font-family:'Cinzel', serif;
+}
+
+/* HOVER */
+
+.portfolio-item:hover img{
+transform:scale(1.12);
+filter:brightness(0.5);
+}
+
+.portfolio-item:hover span{
+opacity:1;
+}
+
+/* ZOOM */
+
 .grid img:hover{
-transform:scale(1.05);
+transform:scale(1.08);
+filter:brightness(1.1);
 }
 /* SOBRE */
 
@@ -343,67 +444,81 @@ padding:120px 8%;
 display:flex;
 gap:80px;
 align-items:center;
+justify-content:center;
 border-top:1px solid #111;
+max-width:1100px;
+margin:auto;
 }
 
 .sobre img{
-width:450px;
+width:400px;
+border-radius:12px;
 }
 
 .sobre-text{
-max-width:450px;
+max-width:400px;
+display:flex;
+flex-direction:column;
+gap:20px;
 }
 
-.sobre h2{
-font-family:'Cinzel', serif;
-}
-
-
-/* CTA */
-
-.cta{
-padding:150px 8%;
-text-align:center;
-border-top:1px solid #111;
-}
-
-.cta h2{
-font-family:'Cinzel', serif;
-}
-
-.cta a{
-display:inline-block;
-margin-top:30px;
-padding:15px 40px;
+.btn-outline{
 border:1px solid white;
+padding:12px 28px;
+border-radius:30px;
 text-decoration:none;
 color:white;
 transition:0.3s;
 }
 
-.cta a:hover{
+.btn-outline:hover{
 background:white;
 color:black;
 }
 
-/* FOOTER */
+/* LOCALIZAÇÃO */
 
-footer{
-padding:40px;
+.localizacao{
+padding:120px 8%;
 text-align:center;
 border-top:1px solid #111;
-color:#777;
 }
+
+/* INSTAGRAM */
+
+.instagram{
+padding:120px 8%;
+text-align:center;
+border-top:1px solid #111;
+}
+
+.instagram-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-bottom:40px;
+}
+
+.instagram-grid img{
+width:100%;
+border-radius:12px;
+}
+
+/* DEPOIMENTOS */
+
+.depoimentos{
+padding:120px 8%;
+text-align:center;
+border-top:1px solid #111;
+}
+
+/* FAQ */
 
 .faq{
 padding:120px 8%;
-border-top:1px solid #111;
 max-width:800px;
 margin:auto;
-}
-
-.faq h2{
-font-family:'Cinzel', serif;
+border-top:1px solid #111;
 }
 
 .faq-item{
@@ -414,70 +529,109 @@ padding:20px 0;
 .faq-question{
 display:flex;
 justify-content:space-between;
-align-items:center;
 cursor:pointer;
-font-size:18px;
-}
-
-.faq-question span{
-color:white;
-}
-
-.faq-icon{
-font-size:24px;
-transition:transform 0.3s;
 }
 
 .faq-answer{
 max-height:0;
 overflow:hidden;
-transition:max-height 0.4s ease;
+transition:max-height 0.4s;
 color:#aaa;
 }
 
-.faq-answer p{
-padding-top:15px;
+/* CTA */
+
+.cta{
+padding:150px 8%;
+text-align:center;
+border-top:1px solid #111;
 }
 
-.faq-item.active .faq-icon{
-transform:rotate(45deg);
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid #111;
+color:#777;
 }
-
-.hero::before{
-
-content:"";
-position:absolute;
+.lightbox{
+position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-
-background:rgba(0,0,0,0.65);
-
-z-index:0;
-
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:99999;
 }
 
-.hero *{
-position:relative;
-z-index:1;
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
 }
 
-.localizacao{
+.portfolio-item{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.6s ease;
+}
+
+.portfolio-item.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.depoimentos{
 padding:120px 8%;
 text-align:center;
 border-top:1px solid #111;
 }
 
-.localizacao h2{
+.depoimentos h2{
 font-family:Cinzel;
 font-size:40px;
+margin-bottom:60px;
+}
+
+.depoimentos-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+max-width:1200px;
+margin:auto;
+}
+
+.depoimento{
+background:#111;
+padding:40px;
+border-radius:12px;
+border:1px solid #222;
+transition:0.3s;
+}
+
+.depoimento:hover{
+transform:translateY(-6px);
+border-color:#444;
+}
+
+.stars{
+color:#ffa200;
+font-size:20px;
 margin-bottom:20px;
 }
 
-.localizacao p{
-color:#aaa;
-margin-bottom:30px;
+.depoimento p{
+color:#ccc;
+margin-bottom:15px;
+}
+
+.depoimento span{
+font-size:14px;
+color:#888;
 }
 </style>
 
@@ -485,9 +639,18 @@ margin-bottom:30px;
 
 <body>
 
-    <div class="cursor"></div>
+  <div class="lightbox" id="lightbox">
 
-    <script>
+<span class="close-lightbox">&times;</span>
+
+<span class="prev">&#10094;</span>
+<img id="lightbox-img">
+<span class="next">&#10095;</span>
+
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
 
 const cursor = document.querySelector(".cursor");
 
@@ -498,11 +661,17 @@ cursor.style.top = e.clientY + "px";
 
 });
 
+});
+
 </script>
+
+</script>
+
+<div class="cursor"></div>
 
 <nav>
 
-<h2>STUDIO</h2>
+<h2>Jefferson Ripper</h2>
 
 <div>
 <a href="#">Home</a>
@@ -510,9 +679,7 @@ cursor.style.top = e.clientY + "px";
 <a href="#sobre">Sobre</a>
 </div>
 
-
 </nav>
-
 
 <section class="hero">
 
@@ -525,14 +692,29 @@ cursor.style.top = e.clientY + "px";
 <a href="#portfolio" class="btn-primary">Ver Portfólio</a>
 
 <a href="https://wa.me/5521970643826" class="btn-outline">
-Agendar Horário
+Falar com o tatuador 
+</a>
+
+<a href="#orcamento" class="btn-orcamento">
+Solicitar orçamento
 </a>
 
 </div>
 
-
 </section>
 
+<section class="estilos">
+
+<h2>Estilos trabalhados</h2>
+
+<ul>
+<li>Blackwork</li>
+<li>Realismo</li>
+<li>Fine Line</li>
+<li>Custom Tattoos</li>
+</ul>
+
+</section>
 
 <section class="orbit-gallery">
 
@@ -549,22 +731,34 @@ Agendar Horário
 
 </section>
 
-
 <section class="portfolio" id="portfolio">
 
 <h2>Portfólio</h2>
 
 <div class="grid">
 
+<div class="portfolio-item">
 <img src="imagens/imagem7.jpg">
-<img src="imagens/imagem8.jpg">
-<img src="imagens/imagem9.jpg">
-<img src="imagens/imagem10.jpg">
-
+<span>Ver Tattoo</span>
 </div>
 
-</section>
+<div class="portfolio-item">
+<img src="imagens/imagem8.jpg">
+<span>Ver Tattoo</span>
+</div>
 
+<div class="portfolio-item">
+<img src="imagens/imagem9.jpg">
+<span>Ver Tattoo</span>
+</div>
+
+<div class="portfolio-item">
+<img src="imagens/imagem10.jpg">
+<span>Ver Tattoo</span>
+</div>
+
+</div>
+</section>
 
 <section class="sobre" id="sobre">
 
@@ -578,24 +772,13 @@ Agendar Horário
 Artista em realismo. Especialista em preto e cinza.
 </p>
 
+<a href="https://www.instagram.com/jeffersonripper/" target="_blank" class="btn-outline">
+Ver Instagram
+</a>
+
 </div>
 
-</section>
-
-<section class="localizacao">
-
-<h2>Localização</h2>
-
-<p>Estúdio localizado em Niteroi - RJ</p>
-
-<iframe 
-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3675.4626581577313!2d-43.1238!3d-22.8963!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9983dad701e211%3A0x4c0c7a7cb5de24e3!2sRua%20Quinze%20de%20Novembro%2C%204%20-%20Centro%2C%20Niter%C3%B3i%20-%20RJ%2C%2024020-125!5e0!3m2!1spt-BR!2sbr!4v1773162329369!5m2!1spt-BR!2sbr"
-width="100%" 
-height="350"
-style="border:0;border-radius:12px;">
-</iframe>
-
-</section>
+</section>   <!-- FECHA AQUI -->
 
 <section class="instagram">
 
@@ -612,136 +795,171 @@ style="border:0;border-radius:12px;">
 
 </div>
 
-<a href="https://www.instagram.com/jeffersonripper/" target="_blank" class="btn-outline">
-Ver Instagram
-</a>
-
 </section>
 
-<section class="faq">
+<section class="depoimentos">
 
-<h2>Perguntas frequentes</h2>
+<h2>O que os clientes dizem</h2>
 
-<div class="faq-item">
+<div class="depoimentos-container">
 
-<div class="faq-question">
-<span>Preciso pagar sinal para agendar?</span>
-<div class="faq-icon">+</div>
+<div class="depoimento">
+<div class="stars">★★★★★</div>
+<p>"Trabalho incrível, tatuagem ficou perfeita. Super recomendo."</p>
+<span>- Cliente</span>
 </div>
 
-<div class="faq-answer">
-<p>
-Sim. O sinal garante seu horário na agenda e é descontado do valor final da tatuagem.
-</p>
+<div class="depoimento">
+<div class="stars">★★★★★</div>
+<p>"Atendimento excelente e resultado impecável."</p>
+<span>- Cliente</span>
 </div>
 
-</div>
-
-
-<div class="faq-item">
-
-<div class="faq-question">
-<span>Como funciona o orçamento?</span>
-<div class="faq-icon">+</div>
-</div>
-
-<div class="faq-answer">
-<p>
-Envie sua ideia de tatuagem com referências, tamanho aproximado e local do corpo.
-</p>
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<div class="faq-question">
-<span>Posso levar uma ideia de tatuagem?</span>
-<div class="faq-icon">+</div>
-</div>
-
-<div class="faq-answer">
-<p>
-Sim. Podemos usar sua ideia como referência e desenvolver uma arte exclusiva.
-</p>
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<div class="faq-question">
-<span>Quanto tempo demora uma tatuagem?</span>
-<div class="faq-icon">+</div>
-</div>
-
-<div class="faq-answer">
-<p>
-Depende do tamanho e complexidade da arte. No orçamento informo o tempo estimado.
-</p>
+<div class="depoimento">
+<div class="stars">★★★★★</div>
+<p>"Melhor tatuador que já fui. Muito detalhista."</p>
+<span>- Cliente</span>
 </div>
 
 </div>
 
 </section>
 
+<section id="orcamento" class="orcamento">
 
-<section class="cta">
+<h2>Envie sua ideia de tatuagem</h2>
 
-<h2>Solicite um orçamento</h2>
+<form class="form-orcamento" id="formOrcamento">
 
-<p>Envie sua ideia de tatuagem.</p>
+<input id="nome" type="text" placeholder="Seu nome" required>
 
-<a href="https://wa.me/5521970643826">
-Falar no WhatsApp
-</a>
+<input id="whatsapp" type="tel" placeholder="WhatsApp" required>
+
+<select id="tamanho" required>
+<option value="">Tamanho da tatuagem</option>
+<option>Pequena</option>
+<option>Média</option>
+<option>Grande</option>
+</select>
+
+<textarea id="descricao" placeholder="Descreva sua ideia"></textarea>
+
+<button type="submit">Enviar orçamento</button>
+
+</form>
 
 </section>
-
 
 <footer>
 © 2026 Studio Tattoo
 </footer>
-
 <script>
 
-const orbit = document.querySelector(".orbit");
+const items = document.querySelectorAll(".portfolio-item")
 
-document.addEventListener("mousemove", (e) => {
+function reveal(){
 
-let x = (window.innerWidth / 2 - e.clientX) / 40;
-let y = (window.innerHeight / 2 - e.clientY) / 40;
+items.forEach(item => {
 
-orbit.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+const top = item.getBoundingClientRect().top
+const windowHeight = window.innerHeight
 
-});
-
-</script>
-
-<script>
-
-const questions = document.querySelectorAll(".faq-question");
-
-questions.forEach(question => {
-
-question.addEventListener("click", () => {
-
-const answer = question.nextElementSibling;
-
-if(answer.style.maxHeight){
-answer.style.maxHeight = null;
-}else{
-answer.style.maxHeight = answer.scrollHeight + "px";
+if(top < windowHeight - 80){
+item.classList.add("visible")
 }
 
-});
+})
+
+}
+
+window.addEventListener("scroll", reveal)
+
+reveal()
+
+</script>
+<script>
+
+const lightbox = document.getElementById("lightbox")
+const lightboxImg = document.getElementById("lightbox-img")
+
+const images = document.querySelectorAll(".portfolio-item img")
+
+let currentIndex = 0
+
+images.forEach((img, index)=>{
+
+img.addEventListener("click", ()=>{
+
+currentIndex = index
+lightbox.style.display = "flex"
+lightboxImg.src = img.src
+
+})
+
+})
+
+function showImage(index){
+
+if(index < 0){
+index = images.length - 1
+}
+
+if(index >= images.length){
+index = 0
+}
+
+currentIndex = index
+lightboxImg.src = images[currentIndex].src
+
+}
+
+document.querySelector(".prev").onclick = ()=>{
+
+showImage(currentIndex - 1)
+
+}
+
+document.querySelector(".next").onclick = ()=>{
+
+showImage(currentIndex + 1)
+
+}
+
+document.querySelector(".close-lightbox").onclick = ()=>{
+
+lightbox.style.display = "none"
+
+}
+
+</script>
+
+<script>
+
+document.getElementById("formOrcamento").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const nome = document.getElementById("nome").value;
+const whatsapp = document.getElementById("whatsapp").value;
+const tamanho = document.getElementById("tamanho").value;
+const descricao = document.getElementById("descricao").value;
+
+const mensagem = `⚜️ Salve, quero um orçamento de tatuagem ⚜️.
+
+⚜️ Nome: ${nome}
+⚜️ WhatsApp: ${whatsapp}
+⚜️ Tamanho: ${tamanho}
+⚜️ Ideia: ${descricao}`;
+
+const numero = "5521970643826"; // seu número
+
+const url = `https://wa.me/+5521970643826?text=${encodeURIComponent(mensagem)}`;
+
+window.open(url, "_blank");
 
 });
 
 </script>
-
 
 </body>
 </html>
