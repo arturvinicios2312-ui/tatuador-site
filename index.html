@@ -13,6 +13,74 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
+  html {
+  scroll-behavior: smooth;
+}
+
+  /* SEÇÃO AGENDAMENTO */
+#agendamento {
+  padding: 100px 20px;
+  background: #0f0f0f;
+  color: #fff;
+  text-align: center;
+}
+
+/* TÍTULO */
+#agendamento h2 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* SUBTEXTO */
+#agendamento p {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+/* CONTAINER DO CALENDLY */
+.calendly-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* WIDGET */
+.calendly-inline-widget {
+  width: 100%;
+  height: 700px;
+  border: none;
+}
+
+/* AVISO DO PIX */
+.aviso-pix {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #ffd000;
+  font-weight: 500;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  #agendamento {
+    padding: 60px 15px;
+  }
+
+  #agendamento h2 {
+    font-size: 28px;
+  }
+
+  #agendamento p {
+    font-size: 16px;
+  }
+
+  .calendly-inline-widget {
+    height: 600px;
+  }
+}
 
   .prev,
 .next{
@@ -695,10 +763,7 @@ cursor.style.top = e.clientY + "px";
 Falar com o tatuador 
 </a>
 
-<a href="#orcamento" class="btn-orcamento">
-Solicitar orçamento
-</a>
-
+<a href="#agendamento" class="btn-primary">Agendar horário</a>
 </div>
 
 </section>
@@ -825,29 +890,21 @@ Ver Instagram
 
 </section>
 
-<section id="orcamento" class="orcamento">
+<section id="agendamento">
+  <h2>Agende seu horário</h2>
+  <p>Escolha o melhor dia e horário abaixo 👇</p>
 
-<h2>Envie sua ideia de tatuagem</h2>
+  <div class="calendly-wrapper">
+    <div class="calendly-inline-widget"
+         data-url="https://calendly.com/arturvinicios2312/retirada-novo-alongamento">
+    </div>
+  </div>
 
-<form class="form-orcamento" id="formOrcamento">
+  <p class="aviso-pix">
+    ⚠️ O agendamento só é confirmado após o pagamento do sinal via Pix.
+  </p>
 
-<input id="nome" type="text" placeholder="Seu nome" required>
-
-<input id="whatsapp" type="tel" placeholder="WhatsApp" required>
-
-<select id="tamanho" required>
-<option value="">Tamanho da tatuagem</option>
-<option>Pequena</option>
-<option>Média</option>
-<option>Grande</option>
-</select>
-
-<textarea id="descricao" placeholder="Descreva sua ideia"></textarea>
-
-<button type="submit">Enviar orçamento</button>
-
-</form>
-
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </section>
 
 <footer>
